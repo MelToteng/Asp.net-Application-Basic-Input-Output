@@ -1,0 +1,585 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5EF04CDE-285B-4971-822C-6628D1FF4F82}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PharmacyApplication</RootNamespace>
+    <AssemblyName>PharmacyApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.3.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.3.0\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.2.0.2\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.2.0.2\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.6\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.3.7\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.3.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="App_Data\DefaultConnection.mdf" />
+    <Content Include="App_Data\DefaultConnection_log.ldf">
+      <DependentUpon>DefaultConnection.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\PharmacyDB.mdf" />
+    <Content Include="App_Data\PharmacyDB_log.ldf">
+      <DependentUpon>PharmacyDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="DAL\PharmacyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PharmacyModel.edmx</DependentUpon>
+      <LastGenOutput>PharmacyModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\PharmacyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PharmacyModel.edmx</DependentUpon>
+      <LastGenOutput>PharmacyModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="DAL\PharmacyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PharmacyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\PharmacyModel.edmx.diagram">
+      <DependentUpon>PharmacyModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="icon2.jpg" />
+    <Content Include="Pages\AddDrug.aspx" />
+    <Content Include="Pages\Dispensary.aspx" />
+    <Content Include="Pages\DrugManager.aspx" />
+    <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\StockManagement.aspx" />
+    <Content Include="Pages\RegisterUser.aspx" />
+    <Content Include="Pages\TransactionsList.aspx" />
+    <Content Include="Pages\UserManager.aspx" />
+    <Content Include="pharmIcon.jpg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.js" />
+    <Content Include="Scripts\jquery.signalR-2.3.0.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Pages\Site.Master" />
+    <Content Include="Theme\custom.css" />
+    <Content Include="Theme\dist\css\sb-admin-2.css" />
+    <Content Include="Theme\dist\css\sb-admin-2.min.css" />
+    <Content Include="Theme\dist\js\sb-admin-2.js" />
+    <Content Include="Theme\dist\js\sb-admin-2.min.js" />
+    <Content Include="Theme\vendor\bootstrap-social\bootstrap-social.css" />
+    <Content Include="Theme\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Theme\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Theme\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Theme\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Theme\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Theme\vendor\datatables-plugins\dataTables.bootstrap.css" />
+    <Content Include="Theme\vendor\datatables-plugins\dataTables.bootstrap.js" />
+    <Content Include="Theme\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
+    <Content Include="Theme\vendor\datatables-plugins\index.html" />
+    <Content Include="Theme\vendor\datatables-responsive\dataTables.responsive.css" />
+    <Content Include="Theme\vendor\datatables-responsive\dataTables.responsive.js" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.bootstrap.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.foundation.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.foundation.min.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.jqueryui.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.jqueryui.min.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.material.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.material.min.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.semanticui.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.semanticui.min.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.uikit.css" />
+    <Content Include="Theme\vendor\datatables\css\dataTables.uikit.min.css" />
+    <Content Include="Theme\vendor\datatables\css\jquery.dataTables.css" />
+    <Content Include="Theme\vendor\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Theme\vendor\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="Theme\vendor\datatables\images\favicon.ico" />
+    <Content Include="Theme\vendor\datatables\images\sort_asc.png" />
+    <Content Include="Theme\vendor\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Theme\vendor\datatables\images\sort_both.png" />
+    <Content Include="Theme\vendor\datatables\images\sort_desc.png" />
+    <Content Include="Theme\vendor\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.bootstrap.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.bootstrap.min.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.bootstrap4.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.foundation.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.foundation.min.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.jqueryui.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.jqueryui.min.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.material.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.material.min.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.semanticui.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.semanticui.min.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.uikit.js" />
+    <Content Include="Theme\vendor\datatables\js\dataTables.uikit.min.js" />
+    <Content Include="Theme\vendor\datatables\js\jquery.dataTables.js" />
+    <Content Include="Theme\vendor\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Theme\vendor\datatables\js\jquery.js" />
+    <Content Include="Theme\vendor\flot-tooltip\jquery.flot.tooltip.js" />
+    <Content Include="Theme\vendor\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <Content Include="Theme\vendor\flot-tooltip\jquery.flot.tooltip.source.js" />
+    <Content Include="Theme\vendor\flot\excanvas.js" />
+    <Content Include="Theme\vendor\flot\excanvas.min.js" />
+    <Content Include="Theme\vendor\flot\jquery.colorhelpers.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.canvas.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.categories.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.crosshair.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.errorbars.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.image.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.navigate.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.pie.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.resize.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.selection.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.stack.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.symbol.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.threshold.js" />
+    <Content Include="Theme\vendor\flot\jquery.flot.time.js" />
+    <Content Include="Theme\vendor\flot\jquery.js" />
+    <Content Include="Theme\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Theme\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Theme\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Theme\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Theme\vendor\jquery\jquery.js" />
+    <Content Include="Theme\vendor\jquery\jquery.min.js" />
+    <Content Include="Theme\vendor\metisMenu\metisMenu.css" />
+    <Content Include="Theme\vendor\metisMenu\metisMenu.js" />
+    <Content Include="Theme\vendor\metisMenu\metisMenu.min.css" />
+    <Content Include="Theme\vendor\metisMenu\metisMenu.min.js" />
+    <Content Include="Theme\vendor\morrisjs\morris.css" />
+    <Content Include="Theme\vendor\morrisjs\morris.js" />
+    <Content Include="Theme\vendor\morrisjs\morris.min.js" />
+    <Content Include="Theme\vendor\raphael\raphael.js" />
+    <Content Include="Theme\vendor\raphael\raphael.min.js" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="Site.Mobile.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Business\DrugsRepository.cs" />
+    <Compile Include="Business\Repository.cs" />
+    <Compile Include="Business\StockRepository.cs" />
+    <Compile Include="Business\TansactionRepository.cs" />
+    <Compile Include="Business\UserRepository.cs" />
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\DRUG.cs">
+      <DependentUpon>PharmacyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PharmacyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PharmacyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PharmacyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PharmacyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PharmacyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PharmacyModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\STOCK.cs">
+      <DependentUpon>PharmacyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TRANSACTION.cs">
+      <DependentUpon>PharmacyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\USER.cs">
+      <DependentUpon>PharmacyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddDrug.aspx.cs">
+      <DependentUpon>AddDrug.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AddDrug.aspx.designer.cs">
+      <DependentUpon>AddDrug.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Dispensary.aspx.cs">
+      <DependentUpon>Dispensary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Dispensary.aspx.designer.cs">
+      <DependentUpon>Dispensary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DrugManager.aspx.cs">
+      <DependentUpon>DrugManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DrugManager.aspx.designer.cs">
+      <DependentUpon>DrugManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StockManagement.aspx.cs">
+      <DependentUpon>StockManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\StockManagement.aspx.designer.cs">
+      <DependentUpon>StockManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegisterUser.aspx.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\RegisterUser.aspx.designer.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TransactionsList.aspx.cs">
+      <DependentUpon>TransactionsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TransactionsList.aspx.designer.cs">
+      <DependentUpon>TransactionsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserManager.aspx.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\UserManager.aspx.designer.cs">
+      <DependentUpon>UserManager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Theme\vendor\bootstrap-social\bootstrap-social.less" />
+    <Content Include="Theme\vendor\bootstrap-social\bootstrap-social.scss" />
+    <Content Include="Theme\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Theme\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Theme\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Theme\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Theme\vendor\datatables-responsive\dataTables.responsive.scss" />
+    <Content Include="Theme\vendor\datatables\images\Sorting icons.psd" />
+    <Content Include="Theme\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Theme\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Theme\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Theme\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Theme\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Theme\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Theme\vendor\font-awesome\less\animated.less" />
+    <Content Include="Theme\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Theme\vendor\font-awesome\less\core.less" />
+    <Content Include="Theme\vendor\font-awesome\less\extras.less" />
+    <Content Include="Theme\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Theme\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Theme\vendor\font-awesome\less\icons.less" />
+    <Content Include="Theme\vendor\font-awesome\less\larger.less" />
+    <Content Include="Theme\vendor\font-awesome\less\list.less" />
+    <Content Include="Theme\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Theme\vendor\font-awesome\less\path.less" />
+    <Content Include="Theme\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Theme\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Theme\vendor\font-awesome\less\spinning.less" />
+    <Content Include="Theme\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Theme\vendor\font-awesome\less\variables.less" />
+    <Content Include="Theme\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_extras.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_spinning.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Theme\vendor\font-awesome\scss\_variables.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58323</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58323/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

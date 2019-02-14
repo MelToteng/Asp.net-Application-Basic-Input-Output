@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PharmacyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DRUGS">
+          <Key>
+            <PropertyRef Name="BR_ID" />
+          </Key>
+          <Property Name="BR_ID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DRUG_NAME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UNITARY_PRICE" Type="int" Nullable="false" />
+          <Property Name="BulkPrice" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="STOCK">
+          <Key>
+            <PropertyRef Name="BR_ID" />
+          </Key>
+          <Property Name="BR_ID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Quantity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Supplier" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SupplierNotes" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserID" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANSACTIONS">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BR_ID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="No_Item" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TotalPrice" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Selling_Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Sale_Date" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CellNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserId" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK__STOCK__BR_ID__403A8C7D">
+          <End Role="DRUGS" Type="Self.DRUGS" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="DRUGS">
+              <PropertyRef Name="BR_ID" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="BR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TRANSACTI__BR_ID__412EB0B6">
+          <End Role="DRUGS" Type="Self.DRUGS" Multiplicity="1" />
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DRUGS">
+              <PropertyRef Name="BR_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS">
+              <PropertyRef Name="BR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PharmacyDBModelStoreContainer">
+          <EntitySet Name="DRUGS" EntityType="Self.DRUGS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STOCK" EntityType="Self.STOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRANSACTIONS" EntityType="Self.TRANSACTIONS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__STOCK__BR_ID__403A8C7D" Association="Self.FK__STOCK__BR_ID__403A8C7D">
+            <End Role="DRUGS" EntitySet="DRUGS" />
+            <End Role="STOCK" EntitySet="STOCK" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TRANSACTI__BR_ID__412EB0B6" Association="Self.FK__TRANSACTI__BR_ID__412EB0B6">
+            <End Role="DRUGS" EntitySet="DRUGS" />
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PharmacyDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DRUG">
+          <Key>
+            <PropertyRef Name="BR_ID" />
+          </Key>
+          <Property Name="BR_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DRUG_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UNITARY_PRICE" Type="Int32" Nullable="false" />
+          <Property Name="BulkPrice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="STOCK" Relationship="Self.FK__STOCK__BR_ID__403A8C7D" FromRole="DRUGS" ToRole="STOCK" />
+          <NavigationProperty Name="TRANSACTIONS" Relationship="Self.FK__TRANSACTI__BR_ID__412EB0B6" FromRole="DRUGS" ToRole="TRANSACTIONS" />
+        </EntityType>
+        <EntityType Name="STOCK">
+          <Key>
+            <PropertyRef Name="BR_ID" />
+          </Key>
+          <Property Name="BR_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Supplier" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SupplierNotes" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DRUG" Relationship="Self.FK__STOCK__BR_ID__403A8C7D" FromRole="STOCK" ToRole="DRUGS" />
+        </EntityType>
+        <EntityType Name="TRANSACTION">
+          <Key>
+            <PropertyRef Name="TransactionId" />
+          </Key>
+          <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BR_ID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="No_Item" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalPrice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Selling_Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Sale_Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DRUG" Relationship="Self.FK__TRANSACTI__BR_ID__412EB0B6" FromRole="TRANSACTIONS" ToRole="DRUGS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CellNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__STOCK__BR_ID__403A8C7D">
+          <End Role="DRUGS" Type="Self.DRUG" Multiplicity="1" />
+          <End Role="STOCK" Type="Self.STOCK" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="DRUGS">
+              <PropertyRef Name="BR_ID" />
+            </Principal>
+            <Dependent Role="STOCK">
+              <PropertyRef Name="BR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TRANSACTI__BR_ID__412EB0B6">
+          <End Role="DRUGS" Type="Self.DRUG" Multiplicity="1" />
+          <End Role="TRANSACTIONS" Type="Self.TRANSACTION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DRUGS">
+              <PropertyRef Name="BR_ID" />
+            </Principal>
+            <Dependent Role="TRANSACTIONS">
+              <PropertyRef Name="BR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PharmacyDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DRUGS" EntityType="Self.DRUG" />
+          <EntitySet Name="STOCKs" EntityType="Self.STOCK" />
+          <EntitySet Name="TRANSACTIONS" EntityType="Self.TRANSACTION" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK__STOCK__BR_ID__403A8C7D" Association="Self.FK__STOCK__BR_ID__403A8C7D">
+            <End Role="DRUGS" EntitySet="DRUGS" />
+            <End Role="STOCK" EntitySet="STOCKs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TRANSACTI__BR_ID__412EB0B6" Association="Self.FK__TRANSACTI__BR_ID__412EB0B6">
+            <End Role="DRUGS" EntitySet="DRUGS" />
+            <End Role="TRANSACTIONS" EntitySet="TRANSACTIONS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PharmacyDBModelStoreContainer" CdmEntityContainer="PharmacyDBEntities">
+          <EntitySetMapping Name="DRUGS">
+            <EntityTypeMapping TypeName="PharmacyDBModel.DRUG">
+              <MappingFragment StoreEntitySet="DRUGS">
+                <ScalarProperty Name="BR_ID" ColumnName="BR_ID" />
+                <ScalarProperty Name="DRUG_NAME" ColumnName="DRUG_NAME" />
+                <ScalarProperty Name="UNITARY_PRICE" ColumnName="UNITARY_PRICE" />
+                <ScalarProperty Name="BulkPrice" ColumnName="BulkPrice" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STOCKs">
+            <EntityTypeMapping TypeName="PharmacyDBModel.STOCK">
+              <MappingFragment StoreEntitySet="STOCK">
+                <ScalarProperty Name="BR_ID" ColumnName="BR_ID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+                <ScalarProperty Name="SupplierNotes" ColumnName="SupplierNotes" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSACTIONS">
+            <EntityTypeMapping TypeName="PharmacyDBModel.TRANSACTION">
+              <MappingFragment StoreEntitySet="TRANSACTIONS">
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="BR_ID" ColumnName="BR_ID" />
+                <ScalarProperty Name="No_Item" ColumnName="No_Item" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Selling_Price" ColumnName="Selling_Price" />
+                <ScalarProperty Name="Sale_Date" ColumnName="Sale_Date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="PharmacyDBModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="CellNumber" ColumnName="CellNumber" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="PharmacyApplication.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Pharmacy Application</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <%--<webopt:BundleReference runat="server" Path="~/Content/css" />--%>
+    <%--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />--%>
+    <link href="~/icon2.jpg" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../Theme/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../Theme/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../Theme/dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../Theme/custom.css" rel="stylesheet" type="text/css">
+
+    <!-- Morris Charts CSS -->
+    <link href="../Theme/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../Theme/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Pharmacy Application</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+                                        <li class="dropdown">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                               <a> <asp:Label ID="loggedInUser" Text="text" runat="server" />, Logged In </a>
+                            </li>
+                            <li>
+                                <a runat="server" href="Login.aspx" onserverclick="Unnamed_LoggingOut" title="Logout">Click to Logout!</a>
+                            </li>
+                        </ul>
+                                                                </li>
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <a href="Dispensary.aspx" data-toggle="tooltip" title="Despense Medicine"><i class="fa fa-ambulance fa-fw"></i>&nbsp;&nbsp;Dispensary</a>
+                            </li>
+                            <li>
+                                <a href="UserManager.aspx" data-toggle="tooltip" title="Manage Users"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;User Management</a>
+                            </li>
+                            <li>
+                                <a href="DrugManager.aspx" data-toggle="tooltip" title="Add or Update Drugs"><i class="fa fa-medkit fa-fw"></i>&nbsp;&nbsp;Drugs Management</a>
+                            </li>
+                            <li>
+                                <a href="StockManagement.aspx" data-toggle="tooltip" title="View or Update Items In stock"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;Stock Management</a>
+                            </li>
+                            <li>
+                                <a href="#" data-toggle="tooltip" title="View transactions recorded"><i class="fa fa-list-ul fa-fw"></i>&nbsp;&nbsp;Transactions</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="container body-content">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <hr />
+                    <footer>
+                        <p>&copy; <%: DateTime.Now.Year %> - Pharmacy Application</p>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- jQuery -->
+            <script src="../Theme/vendor/jquery/jquery.min.js"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+            <script src="../Theme/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+            <!-- Metis Menu Plugin JavaScript -->
+            <script src="../Theme/vendor/metisMenu/metisMenu.min.js"></script>
+
+            <!-- Morris Charts JavaScript -->
+            <script src="../Theme/vendor/raphael/raphael.min.js"></script>
+            <script src="../Theme/vendor/morrisjs/morris.min.js"></script>
+            <script src="../Theme/data/morris-data.js"></script>
+
+            <!-- Custom Theme JavaScript -->
+            <script src="../Theme/dist/js/sb-admin-2.js"></script>
+        </div>
+    </form>
+</body>
+</html>
