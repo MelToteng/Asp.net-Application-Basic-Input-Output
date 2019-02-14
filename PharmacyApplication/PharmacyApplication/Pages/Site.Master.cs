@@ -28,7 +28,7 @@ namespace PharmacyApplication
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //throw ex;
                 Response.Redirect("~/Pages/Login.aspx");
